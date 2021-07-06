@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\moham\\source\\repos\\TaskProject\\BLL\\BLL.csproj": {}
+    "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\moham\\source\\repos\\TaskProject\\BLL\\BLL.csproj": {
+    "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\moham\\source\\repos\\TaskProject\\BLL\\BLL.csproj",
+        "projectUniqueName": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "C:\\Users\\moham\\source\\repos\\TaskProject\\BLL\\BLL.csproj",
+        "projectPath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\BLL\\BLL.csproj",
         "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\moham\\source\\repos\\TaskProject\\BLL\\obj\\",
+        "outputPath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "netstandard2.0": {
             "targetAlias": "netstandard2.0",
             "projectReferences": {
-              "C:\\Users\\moham\\source\\repos\\TaskProject\\Cor\\Core.csproj": {
-                "projectPath": "C:\\Users\\moham\\source\\repos\\TaskProject\\Cor\\Core.csproj"
+              "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\Cor\\Core.csproj": {
+                "projectPath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\Cor\\Core.csproj"
               },
-              "C:\\Users\\moham\\source\\repos\\TaskProject\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\Users\\moham\\source\\repos\\TaskProject\\DAL\\DAL.csproj"
+              "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\DAL\\DAL.csproj"
               }
             }
           }
@@ -72,14 +72,14 @@
         }
       }
     },
-    "C:\\Users\\moham\\source\\repos\\TaskProject\\Cor\\Core.csproj": {
+    "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\Cor\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\moham\\source\\repos\\TaskProject\\Cor\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\Cor\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\moham\\source\\repos\\TaskProject\\Cor\\Core.csproj",
+        "projectPath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\Cor\\Core.csproj",
         "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\moham\\source\\repos\\TaskProject\\Cor\\obj\\",
+        "outputPath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\Cor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -137,14 +137,14 @@
         }
       }
     },
-    "C:\\Users\\moham\\source\\repos\\TaskProject\\DAL\\DAL.csproj": {
+    "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\moham\\source\\repos\\TaskProject\\DAL\\DAL.csproj",
+        "projectUniqueName": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\moham\\source\\repos\\TaskProject\\DAL\\DAL.csproj",
+        "projectPath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\moham\\source\\repos\\TaskProject\\DAL\\obj\\",
+        "outputPath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -161,8 +161,8 @@
           "netstandard2.0": {
             "targetAlias": "netstandard2.0",
             "projectReferences": {
-              "C:\\Users\\moham\\source\\repos\\TaskProject\\Cor\\Core.csproj": {
-                "projectPath": "C:\\Users\\moham\\source\\repos\\TaskProject\\Cor\\Core.csproj"
+              "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\Cor\\Core.csproj": {
+                "projectPath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\Cor\\Core.csproj"
               }
             }
           }

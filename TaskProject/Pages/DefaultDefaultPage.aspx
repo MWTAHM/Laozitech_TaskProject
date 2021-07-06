@@ -1,11 +1,12 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TaskProject._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultDefaultPage.aspx.cs" Inherits="DefaultPage" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
         <h1>ASP.NET</h1>
         <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a><asp:Button ID="Button1" runat="server" BackColor="#3366FF" BorderColor="#3333CC" OnClick="Button1_Click" Text="Button" Width="235px" />
+        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a>
+            <asp:Button ID="Button1" runat="server" BackColor="#3366FF" BorderColor="#3333CC" OnClick="Button1_Click" Text="Button" Width="235px" />
         </p>
     </div>
 

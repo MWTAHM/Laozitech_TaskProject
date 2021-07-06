@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iYbH7mLyvjcvzB7Og4NTmByZCSvgf/K2DlxzV7VcyUVBPWm93DGE/6Tn+/jvJhUL/LdZ3dYVxDAlm0Gm6tbvvQ==",
+  "dgSpecHash": "1DqTgowPPM28IxwbGWVwSkaHR0Y8DAmc0l9fOZ4bW+PkYxIvtdl9TomBXn9jBZo6PR/7clHLsH6WV/YeniJuZQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\moham\\source\\repos\\TaskProject\\BLL\\BLL.csproj",
+  "projectFilePath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

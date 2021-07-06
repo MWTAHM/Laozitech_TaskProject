@@ -123,7 +123,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\work.jpg" />
-    <Content Include="Pages\Default.aspx" />
+    <Content Include="Pages\DefaultDefaultPage.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Projects\ConfirmUnArchive.aspx" />
@@ -272,12 +272,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Pages\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Pages\DefaultDefaultPage.aspx.cs">
+      <DependentUpon>DefaultDefaultPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Pages\DefaultDefaultPage.aspx.designer.cs">
+      <DependentUpon>DefaultDefaultPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

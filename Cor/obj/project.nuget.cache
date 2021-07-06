@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9XASaxt+OSw5sQEYsv47eAxEwOxXMEqYBMpBuFsG0XvVohg928ah3sexJEN8i8swS+rtEfHffrZl32wE/3IUDg==",
+  "dgSpecHash": "e4e1wh/MqEYlG2j9GsuKgv6ABekZqohYeaB+tF9HYuypf0bHQQiOgkAnshSdU0sG2Wf+s4W5Cn9UaAwSUJ+Kow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\moham\\source\\repos\\TaskProject\\Cor\\Core.csproj",
+  "projectFilePath": "C:\\Users\\moham\\Desktop\\Laozitech_TaskProject\\Cor\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
