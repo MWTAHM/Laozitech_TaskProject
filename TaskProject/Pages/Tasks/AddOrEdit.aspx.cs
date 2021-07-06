@@ -146,7 +146,7 @@ namespace TaskProject.Pages.Task
                 validationMessages.Text += "End Date, ";
                 IsValid = false;
             }
-            
+
             if ((!IsEditMode && start < DateTime.Now) || end < start)
             {
                 validationMessages.Text += "Dates, ";

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Core.DTO;
 using Core.Models;
 using DAL.Project;
-using Core.DTO;
+using System.Collections.Generic;
 namespace BLL.Project
 {
     public class ProjectController
@@ -58,7 +56,7 @@ namespace BLL.Project
         {
             return ProjectService.GetProjectById(Id);
         }
-         public static DTOProjectDetails GetProjectById_Details(string Id)
+        public static DTOProjectDetails GetProjectById_Details(string Id)
         {
             return ProjectService.GetProjectById_Details(Id);
         }

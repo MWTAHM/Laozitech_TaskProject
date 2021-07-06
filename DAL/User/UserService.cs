@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Core.DTO;
 using Core.Models;
+using Core.TableModels;
+using DAL.Exceptions;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using DAL.Exceptions;
-using Core.TableModels;
-using Core.DTO;
 
 namespace DAL.Project
 {
@@ -15,8 +14,9 @@ namespace DAL.Project
     {
         public static bool InsertUser(UserModel user)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.RegisterUser", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.RegisterUser", connection))
             {
                 sqlCmd.Parameters.AddWithValue("@P_UserName", user.UserName);
                 sqlCmd.Parameters.AddWithValue("@P_FullName", user.FullName);
@@ -53,8 +53,9 @@ namespace DAL.Project
 
         public static string GetUserName(string id)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("[dbo].[GetUserName]", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("[dbo].[GetUserName]", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_UserId", id);
@@ -85,8 +86,9 @@ namespace DAL.Project
         public static List<DTO_UserInfo_DropDown> GetAllUsersDropDownInfo()
         {
             List<DTO_UserInfo_DropDown> OutUsers = new List<DTO_UserInfo_DropDown>();
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.GetAllUsers", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.GetAllUsers", connection))
             {
                 try
                 {
@@ -122,8 +124,9 @@ namespace DAL.Project
 
         public static UserModel GetUserById(string id)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("dbo.GetUserById", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("dbo.GetUserById", connection))
             {
 
                 sqlCmd.CommandType = CommandType.StoredProcedure;
@@ -185,8 +188,9 @@ namespace DAL.Project
             if (string.IsNullOrWhiteSpace(user.UserId))
                 return false;
 
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.UpdateUser", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.UpdateUser", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
 
@@ -225,8 +229,9 @@ namespace DAL.Project
 
         public static bool DeleteUser(string userId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.DeleteUser", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.DeleteUser", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_UserId", userId);
@@ -253,8 +258,9 @@ namespace DAL.Project
         public static List<UserModel> GetAllUsers()
         {
             List<UserModel> OutUsers = new List<UserModel>();
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.GetAllUsers", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.GetAllUsers", connection))
             {
                 try
                 {
@@ -301,6 +307,6 @@ namespace DAL.Project
             }
         }
 
-        
+
     }
 }

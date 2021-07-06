@@ -1,9 +1,7 @@
 ﻿using BLL.Project;
 using Core.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.UI;
@@ -60,7 +58,7 @@ namespace TaskProject.Pages.UserControl
         {
             if (IsPostBack)
             {
-                if(!ValidateForm(out DateTime? bitrhdate))
+                if (!ValidateForm(out DateTime? bitrhdate))
                 {
                     return;
                 }

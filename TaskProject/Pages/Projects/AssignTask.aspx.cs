@@ -1,9 +1,6 @@
 ﻿using BLL.Project;
-using Core.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -20,8 +17,8 @@ namespace TaskProject.Pages.Tasks
                 Id.Text = Request.QueryString["Id"];
 
                 // The task can be assigned to the users that only have no tasks
-                var NoTaskUsers = UserController.GetAllUsersDropDownInfo().Where(x=>!x.HasTask);
-                if(NoTaskUsers != null && NoTaskUsers.Any())
+                var NoTaskUsers = UserController.GetAllUsersDropDownInfo().Where(x => !x.HasTask);
+                if (NoTaskUsers != null && NoTaskUsers.Any())
                 {
                     foreach (var user in NoTaskUsers)
                     {

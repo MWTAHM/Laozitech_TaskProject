@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Project Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="TaskProject.Pages.Projects.Details" %>
+﻿<%@ Page Title="Project Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProjectTasks.aspx.cs" Inherits="TaskProject.Pages.Projects.ProjectTasks" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="../../Scripts/ProjectDetails.js"></script>
@@ -72,31 +72,8 @@
             });
         });
     </script>
-    
-    <label class="w-100 text-center font-weight-bolder" style="font-size:40px;">Project Details</label>
-    <div>
-        <table>
-            <tr>
-                <td>
-                    <asp:Label runat="server">Project Name:</asp:Label>
-                </td>
-                <td>
-                    <asp:Label runat="server" ID="PName"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label runat="server">End Time: </asp:Label>
-                </td>
-                <td>
-                    <asp:Label runat="server" ID="PEnd"></asp:Label>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <hr />
     <%-- Tasks Table --%>
-    <label class="w-100 text-center font-weight-bolder" style="font-size:40px;">Tasks</label>
+    <asp:Label runat="server" ID="TitleLabel" CssClass="w-100 text-center font-weight-bolder d-block" style="font-size:40px;" Text="Project Tasks"></asp:Label>
     <asp:TextBox hidden="true" runat="server" ID="ProjectIdTextBox"></asp:TextBox>
     <asp:Button Text="New Task" class="btn btn-success" runat="server" onclick="NewTask"></asp:Button>
     <br />
@@ -109,4 +86,5 @@
             <asp:TableCell>Controls</asp:TableCell>
         </asp:TableHeaderRow>
     </asp:Table>
+    <button to></button>
 </asp:Content>

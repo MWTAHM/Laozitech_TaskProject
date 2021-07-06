@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Core.DTO;
 using Core.Models;
+using Core.TableModels;
+using DAL.Exceptions;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using Core.DTO;
-using DAL.Exceptions;
-using Core.TableModels;
 
 namespace DAL.Project
 {
@@ -15,8 +14,9 @@ namespace DAL.Project
     {
         public static bool InsertProject(ProjectModel project)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("dbo.CreateProject", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("dbo.CreateProject", connection))
             {
                 try
                 {
@@ -52,14 +52,15 @@ namespace DAL.Project
                         TimeHappened = DateTime.Now
                     });
                 }
-                return false;            
+                return false;
             }
         }
 
         public static string GetProjectName(string id)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("[dbo].[GetProjectName]", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("[dbo].[GetProjectName]", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_ProjectId", id);
@@ -90,8 +91,9 @@ namespace DAL.Project
 
         public static bool IsValidProject(string projectId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("dbo.GetProjectById", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("dbo.GetProjectById", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_ProjectId", projectId);
@@ -100,7 +102,7 @@ namespace DAL.Project
                 try
                 {
                     SqlDataReader reader = sqlCmd.ExecuteReader();
-                    if(reader.Read())
+                    if (reader.Read())
                     {
                         return !(reader["ProjectId"] is DBNull);
                     }
@@ -122,8 +124,9 @@ namespace DAL.Project
 
         public static bool UnArchiveProject(string projectId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.UnArchiveProject", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.UnArchiveProject", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_ProjectId", projectId);
@@ -149,8 +152,9 @@ namespace DAL.Project
 
         public static bool ArchiveProject(string projectId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.ArchiveProject", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.ArchiveProject", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_ProjectId", projectId);
@@ -176,15 +180,16 @@ namespace DAL.Project
 
         public static ProjectModel GetProjectById(string id)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("dbo.GetProjectById", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("dbo.GetProjectById", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_ProjectId", id);
                 sqlCmd.Connection.Open();
 
                 try
-                {                    
+                {
                     SqlDataReader reader = sqlCmd.ExecuteReader();
 
                     reader.Read();
@@ -227,18 +232,20 @@ namespace DAL.Project
 
         public static DTOProjectDetails GetProjectById_Details(string id)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("dbo.GetProjectById", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("dbo.GetProjectById", connection))
             {
                 try
                 {
                     sqlCmd.CommandType = CommandType.StoredProcedure;
                     sqlCmd.Parameters.AddWithValue("@P_ProjectId", id);
-                    sqlCmd.Connection.Open();                
+                    sqlCmd.Connection.Open();
                     SqlDataReader reader = sqlCmd.ExecuteReader();
                     reader.Read();
-                    return new DTOProjectDetails {
-                        ProjectName = reader["ProjectName"].ToString(),  
+                    return new DTOProjectDetails
+                    {
+                        ProjectName = reader["ProjectName"].ToString(),
                         ProjectEndTime = DateTime.Parse(reader["ProjectEndTime"].ToString())
                     };
                 }
@@ -254,14 +261,15 @@ namespace DAL.Project
                     });
                     return null;
                 }
-                
+
             }
-         }
+        }
 
         public static bool UpdateProject(ProjectModel project)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("dbo.UpdateProject", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("dbo.UpdateProject", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_ProjectId", project.ProjectId);
@@ -304,8 +312,9 @@ namespace DAL.Project
 
         public static bool DeleteProject(string projectId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.DeleteProject", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.DeleteProject", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_ProjectId", projectId);
@@ -332,8 +341,9 @@ namespace DAL.Project
         public static List<ProjectModel> GetAllProjects()
         {
             List<ProjectModel> OutProjects = new List<ProjectModel>();
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.SelectProjects", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.SelectProjects", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
 

@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Core.TableModels;
+using DAL.Exceptions;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Core.Models;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using Core.TableModels;
-using DAL.Exceptions;
+using System.Text;
 
 namespace DAL.Project
 {
@@ -21,8 +20,9 @@ namespace DAL.Project
     {
         public static bool InsertFile(FileModel file)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"[dbo].[CreateFile]", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"[dbo].[CreateFile]", connection))
             {
                 if (file.ProjectId == null && file.TaskId == null)
                 {
@@ -77,8 +77,9 @@ namespace DAL.Project
 
         public static bool DeleteFile(string fileId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"[dbo].[DeleteFile]", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"[dbo].[DeleteFile]", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_FileId", fileId);
@@ -106,8 +107,9 @@ namespace DAL.Project
         public static List<FileModel> GetFilesById(string Id, EFileOwnerType fileOwnerType)
         {
             List<FileModel> OutFiles = new List<FileModel>();
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.GetFilesById", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.GetFilesById", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_OwnerId", Id);

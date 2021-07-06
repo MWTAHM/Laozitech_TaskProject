@@ -11,7 +11,7 @@ namespace TaskProject.Pages.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
                 var allUsers = UserController.GetAllUsers();
@@ -24,7 +24,7 @@ namespace TaskProject.Pages.Users
             var headers = new string[] { "Full Name", "UserName", "Email", "Created At", "Country", "Task", "Controls" };
             StringBuilder html = new StringBuilder();
 
-            html.Append("<table class=\"table table-hover\" ><thead scope=\"col\">");
+            html.Append("<table id=\"UsersTable\" class=\"table table-hover\" ><thead scope=\"col\">");
             html.Append("<tr>");
             foreach (var header in headers)
             {

@@ -11,26 +11,17 @@ namespace TaskProject.Pages.Projects
 {
 
 
-    public partial class Details
+    public partial class ProjectTasks
     {
 
         /// <summary>
-        /// PName control.
+        /// TitleLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PName;
-
-        /// <summary>
-        /// PEnd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PEnd;
+        protected global::System.Web.UI.WebControls.Label TitleLabel;
 
         /// <summary>
         /// ProjectIdTextBox control.

@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Core.TableModels;
+using DAL.Exceptions;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Core.Models;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using Core.TableModels;
-using DAL.Exceptions;
+using System.Text;
 
 namespace DAL.Project
 {
@@ -14,8 +13,9 @@ namespace DAL.Project
     {
         public static bool InsertImage(ImageModel Image)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"[dbo].[CreateImage]", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"[dbo].[CreateImage]", connection))
             {
                 if (Image.ProjectId == null && Image.TaskId == null)
                 {
@@ -71,8 +71,9 @@ namespace DAL.Project
 
         public static bool DeleteImage(/*Must Contain User Id*/string ImageId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"[dbo].[DeleteImage]", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"[dbo].[DeleteImage]", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_ImageId", ImageId);
@@ -100,8 +101,9 @@ namespace DAL.Project
         public static List<ImageModel> GetImagesById(string Id, EFileOwnerType ImageOwnerType)
         {
             List<ImageModel> OutImages = new List<ImageModel>();
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.GetImagesById", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.GetImagesById", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_OwnerId", Id);

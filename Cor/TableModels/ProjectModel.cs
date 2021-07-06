@@ -1,14 +1,10 @@
 ﻿using Core.TableModels;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Models
 {
-   public class ProjectModel
+    public class ProjectModel
     {
         public string ProjectId { get; set; }
         public string ProjectName { get; set; }
@@ -35,6 +31,6 @@ namespace Core.Models
         public double SpentBudgetPercentage => ProjectSpentBudget / ProjectTotalBudget * 100;
         public double LeftBudget => ProjectTotalBudget - ProjectSpentBudget;
         public double LeftBudgetPercentage => LeftBudget / ProjectTotalBudget * 100;
-        public TimeSpan TimeLeft  => ProjectEndTime - ProjectStartTime;
+        public TimeSpan TimeLeft => ProjectEndTime - ProjectStartTime;
     }
 }

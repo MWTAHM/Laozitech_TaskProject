@@ -1,11 +1,5 @@
 ﻿using BLL.Project;
-using Core.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace TaskProject.Pages.Tasks
 {
@@ -18,7 +12,7 @@ namespace TaskProject.Pages.Tasks
                 TaskController.DeleteTask(Id.Text);
                 Response.Redirect("List");
             }
-            else if (Request.QueryString["Id"]!=null)
+            else if (Request.QueryString["Id"] != null)
             {
                 var taskName = TaskController.GetTaskName(Request.QueryString["Id"]);
                 if (taskName != null)

@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Core.Models;
+using Core.TableModels;
+using DAL.Exceptions;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Core.Models;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using DAL.Exceptions;
-using Core.TableModels;
 
 namespace DAL.Task
 {
@@ -14,8 +13,9 @@ namespace DAL.Task
     {
         public static bool InsertTask(TaskModel task)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("[dbo].[CreateTask]", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("[dbo].[CreateTask]", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_TaskId", task.TaskId);
@@ -48,8 +48,9 @@ namespace DAL.Task
 
         public static string GetTaskName(string taskId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("[dbo].[GetTaskName]", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("[dbo].[GetTaskName]", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_TaskId", taskId);
@@ -80,8 +81,9 @@ namespace DAL.Task
 
         public static bool AssignTaskToUser(string taskId, string userId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"[dbo].[AssignTaskToUser]", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"[dbo].[AssignTaskToUser]", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_User_Id", userId);
@@ -109,8 +111,9 @@ namespace DAL.Task
         public static List<TaskModel> GetProjectTasks(string projectId)
         {
             List<TaskModel> outTasks = new List<TaskModel>();
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("dbo.GetProjectsTasks", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("dbo.GetProjectsTasks", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_ParentProjectId", projectId);
@@ -160,8 +163,9 @@ namespace DAL.Task
 
         public static TaskModel GetTaskById(string taskId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand("dbo.GetTaskById", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("dbo.GetTaskById", connection))
             {
 
                 sqlCmd.CommandType = CommandType.StoredProcedure;
@@ -174,7 +178,7 @@ namespace DAL.Task
                     reader.Read();
 
                     DateTime? lastEdit;
-                    if(reader["TaskLastEdit"] is DBNull)
+                    if (reader["TaskLastEdit"] is DBNull)
                     {
                         lastEdit = null;
                     }
@@ -211,8 +215,9 @@ namespace DAL.Task
 
         public static bool UpdateTask(TaskModel task)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.UpdateTask", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.UpdateTask", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@P_TaskId", task.TaskId);
@@ -243,8 +248,9 @@ namespace DAL.Task
 
         public static bool DeleteTask(string taskId)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.DeleteTask", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.DeleteTask", connection))
             {
                 sqlCmd.Parameters.AddWithValue("@P_TaskId", taskId);
                 sqlCmd.CommandType = CommandType.StoredProcedure;
@@ -271,8 +277,9 @@ namespace DAL.Task
         public static List<TaskModel> GetAllTasks()
         {
             List<TaskModel> OutTasks = new List<TaskModel>();
-            string ConnectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
-            using (var sqlCmd = new SqlCommand($"dbo.GetAllTasks", new SqlConnection(ConnectionString)))
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.GetAllTasks", connection))
             {
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 try

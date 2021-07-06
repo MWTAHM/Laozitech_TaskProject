@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Core.DTO;
+﻿using Core.DTO;
 using Core.Models;
 using DAL.Project;
+using System.Collections.Generic;
 
 namespace BLL.Project
 {

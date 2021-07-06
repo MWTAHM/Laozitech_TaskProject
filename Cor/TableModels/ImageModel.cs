@@ -14,14 +14,14 @@ namespace Core.TableModels
         public string ProjectId { get; set; }
         public string TaskId { get; set; }
 
-        
+
         // Not in DB
         public string FullImageName
         {
             get => $"{ImageFileName}{ImageFileExtension}";
             set
             {
-                if (value!= null)
+                if (value != null)
                 {
                     ImageFileName = Path.GetFileNameWithoutExtension(value);
                     ImageFileExtension = Path.GetExtension(value);

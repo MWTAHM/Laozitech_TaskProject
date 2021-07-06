@@ -72,7 +72,7 @@ namespace TaskProject.Pages.ProjectManager
                 html.Append($"<td>");
                 html.Append($"<i class=\"red clickable bi-trash\" onclick=\"Delete('{project.ProjectId}')\"></i>");
                 html.Append($"<i class=\"blue clickable bi-pencil-square\" onclick=\"window.location.href= 'AddOrEdit?Id={project.ProjectId}'\"></i>");
-                html.Append($"<i class=\"blue clickable bi-list\" onclick=\"window.location.href='Details?projectId={project.ProjectId}'\"></i>");
+                html.Append($"<i class=\"blue clickable bi-list\" onclick=\"window.location.href='ProjectTasks?projectId={project.ProjectId}'\"></i>");
                 html.Append($"<i class=\"red clickable bi-archive-fill\" onclick=\"Archive('{project.ProjectId}')\"></i>");
                 html.Append("</td>");
                 html.Append("</tr>");

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Core.Models;
+﻿using Core.Models;
 using DAL.Project;
 using DAL.Task;
+using System.Collections.Generic;
 
 namespace BLL.Project
 {
@@ -77,7 +75,7 @@ namespace BLL.Project
 
         public static string GetTaskName(string taskId)
         {
-            return string.IsNullOrWhiteSpace(taskId)?"No Task":TaskService.GetTaskName(taskId);
+            return string.IsNullOrWhiteSpace(taskId) ? "No Task" : TaskService.GetTaskName(taskId);
         }
     }
 }

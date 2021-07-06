@@ -1,12 +1,15 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultDefaultPage.aspx.cs" Inherits="DefaultPage" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TaskProject._Default" %>
+
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>ASP.NET</h1>
+        <h1>ASP.NET
+        </h1>
         <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a>
-            <asp:Button ID="Button1" runat="server" BackColor="#3366FF" BorderColor="#3333CC" OnClick="Button1_Click" Text="Button" Width="235px" />
+        <p>
+            <a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a><asp:Button ID="Button1" runat="server" BackColor="#3366FF" BorderColor="#3333CC" OnClick="Button1_Click" Text="Button" Width="235px" />
         </p>
     </div>
 
@@ -16,8 +19,9 @@
             <p>
                 ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
             A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
+           
             </p>
-            <asp:Image ID="img" runat="server"/>
+            <asp:Image ID="img" runat="server" />
             <p>
                 <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
             </p>
