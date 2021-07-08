@@ -19,8 +19,8 @@ namespace TaskProject.Pages.Tasks
                 {
                     DeleteText.Text = $"Delete Task {taskName}?";
                     Id.Text = Request.QueryString["Id"];
+                    return;
                 }
-                return;
             }
             Response.Redirect("List");
         }

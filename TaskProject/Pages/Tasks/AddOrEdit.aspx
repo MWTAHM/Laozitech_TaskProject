@@ -1,33 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddOrEdit.aspx.cs" Inherits="TaskProject.Pages.Task.AddOrEdit" %>
 
-
 <asp:Content runat="server" ID="cntnt" ContentPlaceHolderID="MainContent">
-
-    <style>
-
-        .create-form {
-            min-width: 300px;
-            width:550px;
-            border: black solid;
-            margin: 30px;
-            padding: 50px;
-            border-radius: 10px;
-            background-color: rgba(169,134,94,0.8);
-            text-align: center;
-        }
-
-        .form-control {
-            max-width: 100%;
-        }
-
-        body{
-            background-image:url(../../Images/work.jpg);
-            background-attachment:fixed;
-            background-repeat:no-repeat;
-            background-size:cover;
-            backdrop-filter:blur(5px);
-        }
-    </style>
     <div style="display: flex; justify-content: center;">
         <div class="create-form">
             <div class="form-group">

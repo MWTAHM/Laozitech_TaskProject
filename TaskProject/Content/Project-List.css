@@ -1,0 +1,11 @@
+﻿.clickable:hover {
+    cursor: pointer;
+}
+
+#pagination tr {
+    display: none;
+}
+
+.btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active, .show > .btn-light.dropdown-toggle {
+    background-color: cornflowerblue;
+}

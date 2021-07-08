@@ -1,6 +1,8 @@
-﻿using Core.Models;
+﻿using Core.DTO;
+using Core.Models;
 using DAL.Project;
 using DAL.Task;
+using System;
 using System.Collections.Generic;
 
 namespace BLL.Project
@@ -31,6 +33,16 @@ namespace BLL.Project
             {
                 return false;
             }
+        }
+
+        public static List<DTO_TaskUserInfo> GetUsersWorkingOnTask(string id)
+        {
+            return TaskService.GetUsersWorkingOnTask(id);
+        }
+
+        public static bool UnAssignTaskFromUser(string userId)
+        {
+            return TaskService.UnAssignTaskFromUser(userId);
         }
 
         public static bool DeleteTask(string projectId)

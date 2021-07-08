@@ -29,9 +29,10 @@ namespace TaskProject.Pages.Projects
                         taskRow.Cells.Add(new TableCell() { Text = $"Start Time:{item.TaskStartTime:dd-MM-yyyy}<br />End Time:{item.TaskEndTime:dd-MM-yyyy}" });
                         taskRow.Cells.Add(new TableCell()
                         {
-                            Text = $"<i class=\"clickable red bi-trash\" onclick=\"DeleteTask('{item.TaskId}')\"></i>" +
-                                                                   $"<i class=\"clickable blue bi-pencil-fill\" onclick=\"window.location.href='/Pages/Tasks/AddOrEdit?Id={item.TaskId}&ParentId={item.ParentProjectId}'\"></i>" +
-                                                                   $"<i onclick=\"AssignTask('{item.TaskId}')\" class=\"clickable blue bi-arrow-right-short\">Assign</i>"
+                            Text = $"<i title=\"Delete\" class=\"clickable red bi-trash\" onclick=\"DeleteTask('{item.TaskId}')\"></i>" +
+                                   $"<i title=\"Edit\" class=\"clickable blue bi-pencil-fill\" onclick=\"window.location.href='/Pages/Tasks/AddOrEdit?Id={item.TaskId}&ParentId={item.ParentProjectId}'\"></i>" +
+                                   $"<i title=\"Assign Task To User\" onclick=\"AssignTask('{item.TaskId}')\" class=\"clickable blue bi-arrow-right-short\"></i>" +
+                                   $"<i title=\"Show Users Working On Task\" onclick=\"window.location.href='/Pages/Tasks/TaskUsers?TaskId={item.TaskId}'\" class=\"clickable blue bi-people-fill\"></i>"
                         });
                         Tasks.Rows.Add(taskRow);
                     }

@@ -1,6 +1,7 @@
 ﻿using Core.DTO;
 using Core.Models;
 using DAL.Project;
+using System;
 using System.Collections.Generic;
 namespace BLL.Project
 {
@@ -56,6 +57,12 @@ namespace BLL.Project
         {
             return ProjectService.GetProjectById(Id);
         }
+
+        public static string GetProjectIdFromTaskId(string Id)
+        {
+            return ProjectService.GetProjectIdFromTaskId(Id);
+        }
+
         public static DTOProjectDetails GetProjectById_Details(string Id)
         {
             return ProjectService.GetProjectById_Details(Id);

@@ -122,7 +122,12 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Project-AddOrEdit.css" />
+    <Content Include="Content\Project-List.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\SiteMaster.css" />
+    <Content Include="Content\Task-AddOrEdit.css" />
+    <Content Include="Content\User-Registration.css" />
     <Content Include="Images\work.jpg" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="favicon.ico" />
@@ -130,6 +135,8 @@
     <Content Include="Pages\Projects\ConfirmUnArchive.aspx" />
     <Content Include="Pages\Projects\ConfirmArchive.aspx" />
     <Content Include="Pages\Projects\AssignTask.aspx" />
+    <Content Include="Pages\Tasks\TaskUsers.aspx" />
+    <Content Include="Pages\Users\UnAssignTask.aspx" />
     <Content Include="Pages\Users\ConfirmDelete.aspx" />
     <Content Include="Pages\Users\List.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -161,9 +168,7 @@
     <Content Include="Pages\Projects\ConfirmDelete.aspx" />
     <Content Include="Pages\Projects\List.aspx" />
     <Content Include="Pages\Tasks\AddOrEdit.aspx" />
-    <Content Include="Pages\Tasks\AllDetails.aspx" />
     <Content Include="Pages\Projects\ConfirmDeleteTask.aspx" />
-    <Content Include="Pages\Users\Login.aspx" />
     <Content Include="Pages\Users\Registration.aspx" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -243,6 +248,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\Users-List.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -332,13 +338,6 @@
     <Compile Include="Pages\Tasks\AddOrEdit.aspx.designer.cs">
       <DependentUpon>AddOrEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Tasks\AllDetails.aspx.cs">
-      <DependentUpon>AllDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Tasks\AllDetails.aspx.designer.cs">
-      <DependentUpon>AllDetails.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Projects\AssignTask.aspx.cs">
       <DependentUpon>AssignTask.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -353,6 +352,20 @@
     <Compile Include="Pages\Projects\ConfirmDeleteTask.aspx.designer.cs">
       <DependentUpon>ConfirmDeleteTask.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Tasks\TaskUsers.aspx.cs">
+      <DependentUpon>TaskUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Tasks\TaskUsers.aspx.designer.cs">
+      <DependentUpon>TaskUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Users\UnAssignTask.aspx.cs">
+      <DependentUpon>UnAssignTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Users\UnAssignTask.aspx.designer.cs">
+      <DependentUpon>UnAssignTask.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Users\ConfirmDelete.aspx.cs">
       <DependentUpon>ConfirmDelete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -366,13 +379,6 @@
     </Compile>
     <Compile Include="Pages\Users\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Users\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Users\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Users\Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>

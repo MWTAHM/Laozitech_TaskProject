@@ -20,5 +20,7 @@ namespace Core.TableModels
             get => JsonConvert.DeserializeObject<Exception>(SerializedExceptionObject);
             set => SerializedExceptionObject = JsonConvert.SerializeObject(value);
         }
+
+        public string ExceptionMessage => ExceptionObject.Message;
     }
 }

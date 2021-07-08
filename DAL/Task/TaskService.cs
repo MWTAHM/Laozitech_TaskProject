@@ -1,4 +1,5 @@
-﻿using Core.Models;
+﻿using Core.DTO;
+using Core.Models;
 using Core.TableModels;
 using DAL.Exceptions;
 using System;
@@ -38,6 +39,75 @@ namespace DAL.Task
                         ClassName = nameof(TaskService),
                         ExceptionObject = e,
                         MethodName = nameof(InsertTask),
+                        Namespace = nameof(Project),
+                        TimeHappened = DateTime.Now
+                    });
+                }
+                return false;
+            }
+        }
+
+        public static List<DTO_TaskUserInfo> GetUsersWorkingOnTask(string id)
+        {
+            var OutTasks = new List<DTO_TaskUserInfo>();
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"dbo.GetUsersWorkingOnTask", connection))
+            {
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@P_TaskId", id);
+                try
+                {
+                    sqlCmd.Connection.Open();
+                    SqlDataReader reader = sqlCmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        OutTasks.Add(new DTO_TaskUserInfo
+                        {
+                            Email = reader["Email"].ToString(),
+                            UserId = reader["UserId"].ToString(),
+                            Country = reader["Country"].ToString(),
+                            FullName = reader["FullName"].ToString(),
+                            UserName = reader["UserName"].ToString(),
+                        });
+                    }
+                }
+                catch (Exception e)
+                {
+                    ExceptionService.InsertExcepton(new ExceptionModel
+                    {
+                        ClassName = nameof(TaskService),
+                        ExceptionObject = e,
+                        MethodName = nameof(GetUsersWorkingOnTask),
+                        Namespace = nameof(Project),
+                        TimeHappened = DateTime.Now
+                    });
+                    return null;
+                }
+                return OutTasks;
+            }
+        }
+
+        public static bool UnAssignTaskFromUser(string userId)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand($"[dbo].[UnAssignTaskFromUser]", connection))
+            {
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@P_UserId", userId);                
+                try
+                {
+                    sqlCmd.Connection.Open();
+                    return sqlCmd.ExecuteNonQuery() == 1;
+                }
+                catch (Exception e)
+                {
+                    ExceptionService.InsertExcepton(new ExceptionModel
+                    {
+                        ClassName = nameof(TaskService),
+                        ExceptionObject = e,
+                        MethodName = nameof(AssignTaskToUser),
                         Namespace = nameof(Project),
                         TimeHappened = DateTime.Now
                     });

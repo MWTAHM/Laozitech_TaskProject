@@ -1,0 +1,16 @@
+﻿.clickable {
+    transition-duration: 300ms;
+    font-size: x-large;
+}
+
+    .clickable:hover {
+        cursor: pointer;
+    }
+
+.red:hover {
+    color: red;
+}
+
+.blue:hover {
+    color: blue;
+}

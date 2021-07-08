@@ -36,7 +36,7 @@ namespace TaskProject.Pages.ProjectManager
                     new TableCell{Text = archived.ProjectTotalBudget.ToString()}, // Budget
                     new TableCell{Text = archived.ProjectManagerName}, // Manager
                     new TableCell{Text = $"{archived.AchievedPercentage} %"}, // Achieved %
-                    new TableCell{Text = $"<i class=\"clickable blue bi-archive\" onclick=\"UnArchive('{archived.ProjectId}')\"></i>"}  // Controls
+                    new TableCell{Text = $"<i title=\"UnArchive\" class=\"clickable blue bi-archive\" onclick=\"UnArchive('{archived.ProjectId}')\"></i>"}  // Controls
                     }
                 );
                 ArchivedTable.Rows.Add(RowToAdd);
@@ -70,10 +70,10 @@ namespace TaskProject.Pages.ProjectManager
                 html.Append($"<td>{project.CompanyName}</td>");
                 html.Append($"<td>{project.AchievedPercentage}%</td>");
                 html.Append($"<td>");
-                html.Append($"<i class=\"red clickable bi-trash\" onclick=\"Delete('{project.ProjectId}')\"></i>");
-                html.Append($"<i class=\"blue clickable bi-pencil-square\" onclick=\"window.location.href= 'AddOrEdit?Id={project.ProjectId}'\"></i>");
-                html.Append($"<i class=\"blue clickable bi-list\" onclick=\"window.location.href='ProjectTasks?projectId={project.ProjectId}'\"></i>");
-                html.Append($"<i class=\"red clickable bi-archive-fill\" onclick=\"Archive('{project.ProjectId}')\"></i>");
+                html.Append($"<i title=\"Delete\" class=\"red clickable bi-trash\" onclick=\"Delete('{project.ProjectId}')\"></i>");
+                html.Append($"<i title=\"Edit\" class=\"blue clickable bi-pencil-square\" onclick=\"window.location.href= 'AddOrEdit?Id={project.ProjectId}'\"></i>");
+                html.Append($"<i title=\"Show Tasks\" class=\"blue clickable bi-list\" onclick=\"window.location.href='ProjectTasks?projectId={project.ProjectId}'\"></i>");
+                html.Append($"<i title=\"Archive\" class=\"red clickable bi-archive-fill\" onclick=\"Archive('{project.ProjectId}')\"></i>");
                 html.Append("</td>");
                 html.Append("</tr>");
             }

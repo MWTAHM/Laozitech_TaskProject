@@ -16,9 +16,12 @@ namespace TaskProject.Pages.Projects
             else if (Request.QueryString["Id"] != null)
             {
                 var projectName = ProjectController.GetProjectName(Request.QueryString["Id"]);
-                DeleteText.Text = $"Delete Project {projectName}?";
-                Id.Text = Request.QueryString["Id"];
-                return;
+                if(projectName != null)
+                {
+                    DeleteText.Text = $"Delete Project {projectName}?";
+                    Id.Text = Request.QueryString["Id"];
+                    return;
+                }
             }
             Response.Redirect("List");
         }

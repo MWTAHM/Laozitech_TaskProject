@@ -20,7 +20,8 @@ namespace TaskProject.Pages.ProjectManager
                     return;
                 }
 
-                var ProjectId = string.IsNullOrWhiteSpace(PId.Text) ? Guid.NewGuid().ToString() : PId.Text;
+                bool IsEditMode = !string.IsNullOrWhiteSpace(PId.Text);
+                var ProjectId = IsEditMode ? PId.Text:Guid.NewGuid().ToString();
                 var newProject = new ProjectModel
                 {
                     ProjectId = ProjectId,
@@ -44,7 +45,7 @@ namespace TaskProject.Pages.ProjectManager
 
                 AddImagesToProject(newProject);
 
-                if (!string.IsNullOrWhiteSpace(PId.Text))
+                if (IsEditMode)
                 {
                     ProjectController.UpdateProject(newProject);
                 }
@@ -56,12 +57,12 @@ namespace TaskProject.Pages.ProjectManager
             }
             else if (Request.QueryString["Id"] != null)
             {
-                EditProject(out ManagerId);
+                PreparePage_EditProject(out ManagerId);
             }
-            FillUsersList(ManagerId);
+            FillUsersDropDownList(ManagerId);
         }
 
-        private void FillUsersList(string ManagerId)
+        private void FillUsersDropDownList(string ManagerId)
         {
             var AllUsers = UserController.GetAllUsersDropDownInfo();
             foreach (var user in AllUsers)
@@ -69,7 +70,8 @@ namespace TaskProject.Pages.ProjectManager
                 UsersList.Items.Add(new ListItem { Text = user.FullName, Value = user.UserId, Selected = ManagerId == user.UserId });
             }
         }
-        private void EditProject(out string ManagerId)
+
+        private void PreparePage_EditProject(out string ManagerId)
         {
             ManagerId = "";
             PId.Text = Request.QueryString["Id"];
@@ -96,6 +98,7 @@ namespace TaskProject.Pages.ProjectManager
                 StartDate.ReadOnly = true;
             }
         }
+
         private bool ValidateForm(out double budget, out DateTime start, out DateTime end)
         {
             /* Server Side Validation */
@@ -168,6 +171,7 @@ namespace TaskProject.Pages.ProjectManager
             }
             return true;
         }
+
         private void AddImagesToProject(ProjectModel project)
         {
             if (images.HasFiles)
@@ -200,6 +204,5 @@ namespace TaskProject.Pages.ProjectManager
                 }
             }
         }
-
     }
 }

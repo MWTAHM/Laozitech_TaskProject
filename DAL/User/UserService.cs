@@ -18,10 +18,19 @@ namespace DAL.Project
             using (var connection = new SqlConnection(connectionString))
             using (var sqlCmd = new SqlCommand($"dbo.RegisterUser", connection))
             {
+                object birthdate;
+                if (user.BirthDate != null)
+                {
+                    birthdate = user.BirthDate.Value;
+                }
+                else 
+                {
+                    birthdate = DBNull.Value;
+                }
                 sqlCmd.Parameters.AddWithValue("@P_UserName", user.UserName);
                 sqlCmd.Parameters.AddWithValue("@P_FullName", user.FullName);
                 sqlCmd.Parameters.AddWithValue("@P_Email", user.EmailAddress);
-                sqlCmd.Parameters.AddWithValue("@P_BirthDate", user.BirthDate);
+                sqlCmd.Parameters.AddWithValue("@P_BirthDate", birthdate);
                 sqlCmd.Parameters.AddWithValue("@P_PasswordEncoded", user.PasswordEncoded);
                 sqlCmd.Parameters.AddWithValue("@P_PhoneNumber", user.PhoneNumber);
                 sqlCmd.Parameters.AddWithValue("@P_Country", user.Country);

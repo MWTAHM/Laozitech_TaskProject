@@ -27,16 +27,19 @@ namespace TaskProject.Pages.Tasks
                 }
                 else
                 {
-                    Response.Redirect(".");
+                    Placeholder.Controls.Clear();
+                    Placeholder.Controls.Add(new Label { Text = "There is no user with no task", CssClass="text-danger" });
                 }
             }
         }
 
-        protected void Confirmed(object sender, EventArgs e)
+        protected void Confirme_Clicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(Id.Text) && Users.SelectedIndex > -1)
             {
                 TaskController.AssignTaskToUser(Id.Text, Users.SelectedItem.Value);
+                var ProjectId = ProjectController.GetProjectIdFromTaskId(Id.Text);
+                Response.Redirect($"ProjectTasks?projectId={ProjectId}");
             }
         }
     }

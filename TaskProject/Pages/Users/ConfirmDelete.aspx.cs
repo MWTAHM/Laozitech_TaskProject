@@ -16,9 +16,12 @@ namespace TaskProject.Pages.Users
             else if (Request.QueryString["Id"] != null)
             {
                 var userName = UserController.GetUserName(Request.QueryString["Id"]);
-                DeleteText.Text = $"Delete User {userName}?";
-                Id.Text = Request.QueryString["Id"];
-                return;
+                if(userName != null)
+                {
+                    DeleteText.Text = $"Delete User {userName}?";
+                    Id.Text = Request.QueryString["Id"];
+                    return;
+                }
             }
             Response.Redirect("List");
         }

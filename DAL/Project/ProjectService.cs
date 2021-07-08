@@ -56,6 +56,39 @@ namespace DAL.Project
             }
         }
 
+        public static string GetProjectIdFromTaskId(string id)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            using (var sqlCmd = new SqlCommand("[dbo].[GetProjectIdFromTaskId]", connection))
+            {
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@P_TaskId", id);                
+                try
+                {
+                    sqlCmd.Connection.Open();
+                    SqlDataReader reader = sqlCmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        return reader["ParentProjectId"].ToString();
+                    }
+                }
+                catch (Exception e)
+                {
+                    ExceptionService.InsertExcepton(new ExceptionModel
+                    {
+                        ClassName = nameof(ProjectService),
+                        ExceptionObject = e,
+                        MethodName = nameof(GetProjectName),
+                        Namespace = nameof(Project),
+                        TimeHappened = DateTime.Now
+                    });
+                }
+                return "Error";
+            }
+            throw new NotImplementedException();
+        }
+
         public static string GetProjectName(string id)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["TaskProjectConnectionString"].ToString();

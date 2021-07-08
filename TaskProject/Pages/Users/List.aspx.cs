@@ -15,11 +15,11 @@ namespace TaskProject.Pages.Users
             if (!IsPostBack)
             {
                 var allUsers = UserController.GetAllUsers();
-                FillTable(allUsers);
+                FillUsersTable(allUsers);
             }
         }
 
-        private void FillTable(List<Core.Models.UserModel> allUsers)
+        private void FillUsersTable(List<Core.Models.UserModel> allUsers)
         {
             var headers = new string[] { "Full Name", "UserName", "Email", "Created At", "Country", "Task", "Controls" };
             StringBuilder html = new StringBuilder();
@@ -34,17 +34,18 @@ namespace TaskProject.Pages.Users
             }
             html.Append("</tr></thead>");
 
-            foreach (var users in allUsers)
+            foreach (var user in allUsers)
             {
                 html.Append($"<tr>");
-                html.Append($"<td>{users.UserName}</td>");
-                html.Append($"<td>{users.FullName}</td>");
-                html.Append($"<td>{users.EmailAddress}</td>");
-                html.Append($"<td>{users.UserRegistratonTime:dd-MM-yyyy}</td>"); // Times
-                html.Append($"<td>{users.Country}</td>");
-                html.Append($"<td>{TaskController.GetTaskName(users.CurrentTaskId)}</td>");
+                html.Append($"<td>{user.UserName}</td>");
+                html.Append($"<td>{user.FullName}</td>");
+                html.Append($"<td>{user.EmailAddress}</td>");
+                html.Append($"<td>{user.UserRegistratonTime:dd-MM-yyyy}</td>"); // Times
+                html.Append($"<td>{user.Country}</td>");
+                html.Append($"<td>{TaskController.GetTaskName(user.CurrentTaskId)}</td>");
                 html.Append($"<td>");
-                html.Append($"<i class=\"red clickable bi-trash\" onclick=\"Delete('{users.UserId}')\"></i>");
+                html.Append($"<i title=\"Delete\" class=\"red clickable bi-trash\" onclick=\"Delete('{user.UserId}')\"></i>");
+                html.Append($"<i title=\"UnAssign Task From User\" class=\"red clickable bi-file-earmark-x\" onclick=\"UnAssignTask('{user.CurrentTaskId}','{user.UserName}','{user.UserId}')\"></i>");
                 html.Append("</td>");
                 html.Append("</tr>");
             }

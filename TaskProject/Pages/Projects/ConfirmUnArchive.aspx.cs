@@ -20,8 +20,8 @@ namespace TaskProject.Pages.Projects
                 {
                     DeleteText.Text = $"UnArchvie Project {projectName}?";
                     Id.Text = Request.QueryString["Id"];
+                    return;
                 }
-                return;
             }
             Response.Redirect("List");
         }

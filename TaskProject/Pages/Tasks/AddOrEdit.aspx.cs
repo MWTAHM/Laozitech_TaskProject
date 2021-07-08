@@ -12,26 +12,26 @@ namespace TaskProject.Pages.Task
         {
             if (IsPostBack)
             {
-                /* Server Side Validation */
                 if (!ValidateForm(out DateTime start, out DateTime end))
                 {
                     return;
                 }
 
-                var _TaskId = string.IsNullOrWhiteSpace(TaskId.Text) ? Guid.NewGuid().ToString() : TaskId.Text;
+                bool IsEditMode = !string.IsNullOrWhiteSpace(TaskId.Text);
+                var _TaskId = IsEditMode ? TaskId.Text : Guid.NewGuid().ToString();
                 var newTask = new TaskModel
                 {
                     TaskId = _TaskId,
-                    ParentProjectId = ParentId.Text,
-                    TaskDescription = TaskDesc.Text,
                     TaskEndTime = end,
+                    TaskStartTime = start,
                     TaskName = TaskName.Text,
-                    TaskStartTime = start
+                    ParentProjectId = ParentId.Text,
+                    TaskDescription = TaskDesc.Text
                 };
 
                 FillFilesAndImages(newTask);
 
-                if (!string.IsNullOrWhiteSpace(TaskId.Text))
+                if (IsEditMode)
                 {
                     TaskController.UpdateTask(newTask);
                 }
@@ -39,12 +39,12 @@ namespace TaskProject.Pages.Task
                 {
                     TaskController.NewTask(newTask);
                 }
-                Response.Redirect($"/Pages/Projects/Details?projectId={newTask.ParentProjectId}"); // TODO: Return To Project
+                Response.Redirect($"/Pages/Projects/ProjectTasks?projectId={newTask.ParentProjectId}"); // TODO: Return To Project
             }
             else if (Request.QueryString["ParentId"] != null)
             {
                 TaskId.Text = Request.QueryString["Id"];
-                TitleLabel.Text = TaskId.Text == null ? "New Project" : "Edit Project";
+                TitleLabel.Text = TaskId.Text == null ? "New Task" : "Edit Task";
 
                 if (ProjectController.IsValidProject(Request.QueryString["ParentId"]))
                 {
@@ -101,8 +101,10 @@ namespace TaskProject.Pages.Task
                 }
             }
         }
+
         private bool ValidateForm(out DateTime start, out DateTime end)
         {
+            /* Server Side Validation */
             bool IsValid = true;
             bool IsEditMode = !string.IsNullOrWhiteSpace(TaskId.Text);
 
